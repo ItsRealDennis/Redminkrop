@@ -203,16 +203,16 @@
 .nav-link::before {
   content: '';
   position: absolute;
-  left: -100%;
+  left: 0;
   top: 0;
-  width: 100%;
+  width: 0;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(237, 106, 47, 0.1), transparent);
-  transition: left 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  background: rgba(237, 106, 47, 0.05);
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .nav-link:hover::before {
-  left: 100%;
+  width: 100%;
 }
 
 .nav-link:hover {
@@ -240,7 +240,8 @@
   color: #ffffff;
   text-transform: uppercase;
   letter-spacing: 0.02em;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
 }
 
 .nav-link:hover .link-text {

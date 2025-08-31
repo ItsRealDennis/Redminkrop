@@ -138,7 +138,9 @@ export default function CasesRMK() {
         {cases.map((caseItem, index) => (
           <div
             key={caseItem.id}
-            ref={el => caseRefs.current[index] = el}
+            ref={el => {
+              if (el) caseRefs.current[index] = el;
+            }}
             className="case-section"
             style={{ '--case-color': caseItem.color } as React.CSSProperties}
           >

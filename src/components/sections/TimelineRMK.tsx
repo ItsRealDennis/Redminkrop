@@ -120,7 +120,7 @@ export default function TimelineRMK() {
 
                 {item.quote && (
                   <blockquote className="rmk-quote">
-                    <p>"{item.quote.text}"</p>
+                    <p>&ldquo;{item.quote.text}&rdquo;</p>
                     <footer>
                       <strong>{item.quote.author}</strong>
                       <span> – {item.quote.role}</span>
