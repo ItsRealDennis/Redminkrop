@@ -1,0 +1,608 @@
+/* Immersive Timeline - Premium Design */
+.immersive-timeline {
+  position: relative;
+  background: #000000;
+  overflow: hidden;
+}
+
+/* Progress Indicator */
+.progress-indicator {
+  position: fixed;
+  right: 3rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 100;
+  display: none;
+}
+
+@media (min-width: 1280px) {
+  .progress-indicator {
+    display: block;
+  }
+}
+
+.progress-track {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.progress-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(180deg, #14b8a6, #0ea5e9);
+  transition: height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.progress-years {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.progress-year {
+  position: relative;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: all 0.3s;
+}
+
+.progress-year-text {
+  font-size: 0.75rem;
+  color: #6b7280;
+  font-weight: 500;
+  transition: all 0.3s;
+  opacity: 0;
+}
+
+.progress-year:hover .progress-year-text,
+.progress-year.active .progress-year-text {
+  opacity: 1;
+  color: #ffffff;
+}
+
+.progress-year-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #374151;
+  transition: all 0.3s;
+}
+
+.progress-year.active .progress-year-dot {
+  width: 12px;
+  height: 12px;
+  background: #14b8a6;
+  box-shadow: 0 0 20px rgba(20, 184, 166, 0.5);
+}
+
+/* Immersive Sections */
+.immersive-section {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 8rem 2rem;
+  opacity: 0;
+  transition: opacity 1s ease-out;
+}
+
+.immersive-section.in-view {
+  opacity: 1;
+}
+
+/* Background Year */
+.immersive-year-bg {
+  position: absolute;
+  top: 50%;
+  right: -10%;
+  transform: translateY(-50%);
+  font-size: 35vw;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.02);
+  pointer-events: none;
+  user-select: none;
+  z-index: 1;
+  transition: transform 0.1s linear;
+  letter-spacing: -0.08em;
+}
+
+/* Content */
+.immersive-content {
+  position: relative;
+  z-index: 10;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.immersive-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem;
+}
+
+@media (min-width: 1024px) {
+  .immersive-grid {
+    grid-template-columns: 1.8fr 1fr;
+    gap: 8rem;
+  }
+}
+
+/* Main Content */
+.immersive-main {
+  space-y: 2rem;
+}
+
+.immersive-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.immersive-year {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #14b8a6;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.immersive-badge {
+  padding: 0.5rem 1rem;
+  background: linear-gradient(135deg, #14b8a6, #0ea5e9);
+  color: #000000;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 9999px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.immersive-title {
+  font-size: clamp(3rem, 8vw, 5rem);
+  font-weight: 300;
+  line-height: 1;
+  margin-bottom: 2rem;
+  letter-spacing: -0.03em;
+}
+
+.title-line {
+  display: block;
+  overflow: hidden;
+}
+
+.title-line.accent {
+  color: #14b8a6;
+  font-weight: 500;
+}
+
+.immersive-description {
+  font-size: 1.25rem;
+  color: #9ca3af;
+  line-height: 1.8;
+  max-width: 600px;
+  margin-bottom: 2rem;
+}
+
+/* Impact Text - Simple */
+.immersive-impact-text {
+  font-size: 1.125rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 300;
+  margin: 2rem 0;
+}
+
+/* Inline Link - Minimal */
+.immersive-inline-link {
+  display: inline-block;
+  color: rgba(255, 255, 255, 0.5);
+  text-decoration: none;
+  font-size: 0.9375rem;
+  font-weight: 400;
+  transition: all 0.3s;
+  margin-top: 2rem;
+}
+
+.immersive-inline-link:hover {
+  color: rgba(255, 255, 255, 0.9);
+  transform: translateX(4px);
+}
+
+/* Side Content - Ultra Minimal */
+.immersive-side {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.side-content {
+  width: 100%;
+}
+
+/* Metrics - Just Numbers */
+.immersive-metrics {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  align-items: flex-end;
+  text-align: right;
+}
+
+.metric-card {
+  position: relative;
+  opacity: 0.6;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.metric-card:hover {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+.metric-value {
+  font-size: 3.5rem;
+  font-weight: 100;
+  line-height: 1;
+  margin-bottom: 0.25rem;
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-end;
+  gap: 0.125rem;
+  letter-spacing: -0.03em;
+}
+
+.metric-number {
+  color: rgba(255, 255, 255, 0.9);
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.metric-unit {
+  font-size: 2rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 200;
+}
+
+.metric-label {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.3);
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.metric-glow {
+  display: none;
+}
+
+/* Quote - Hidden by default */
+.immersive-quote {
+  display: none;
+}
+
+.quote-mark {
+  display: none;
+}
+
+.quote-text {
+  position: relative;
+  font-size: 1.125rem;
+  color: #e5e7eb;
+  line-height: 1.8;
+  margin-bottom: 1rem;
+  font-style: italic;
+  opacity: 0.9;
+}
+
+.quote-text::before {
+  content: '"';
+  position: absolute;
+  left: -1.5rem;
+  top: -0.5rem;
+  font-size: 2rem;
+  color: #14b8a6;
+  opacity: 0.5;
+  font-family: Georgia, serif;
+}
+
+.quote-footer {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.quote-avatar {
+  display: none;
+}
+
+.quote-author {
+  font-weight: 600;
+  color: #ffffff;
+  display: block;
+}
+
+.quote-role {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+/* Link - Subtle Style */
+.immersive-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 2rem;
+  padding: 0;
+  background: transparent;
+  border: none;
+  color: #14b8a6;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.9375rem;
+  transition: all 0.3s;
+  position: relative;
+}
+
+.immersive-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: #14b8a6;
+  transition: width 0.3s;
+}
+
+.immersive-link:hover {
+  color: #0ea5e9;
+  transform: translateX(4px);
+}
+
+.immersive-link:hover::after {
+  width: calc(100% - 24px);
+}
+
+.link-arrow {
+  transition: transform 0.3s;
+}
+
+.immersive-link:hover .link-arrow {
+  transform: translateX(4px);
+}
+
+/* Section Divider */
+.section-divider {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem 0;
+}
+
+.divider-line {
+  width: 100px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+}
+
+.divider-circle {
+  position: relative;
+  width: 12px;
+  height: 12px;
+  background: #14b8a6;
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(20, 184, 166, 0.5);
+}
+
+.divider-pulse {
+  position: absolute;
+  inset: -8px;
+  border: 2px solid #14b8a6;
+  border-radius: 50%;
+  animation: pulsate 2s infinite;
+}
+
+@keyframes pulsate {
+  0% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(1.5); }
+}
+
+/* Final CTA */
+.immersive-cta-section {
+  position: relative;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6rem 2rem;
+  overflow: hidden;
+}
+
+.cta-content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  max-width: 800px;
+}
+
+.cta-title {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 300;
+  color: #ffffff;
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.cta-subtitle {
+  font-size: 1.25rem;
+  color: #9ca3af;
+  margin-bottom: 3rem;
+}
+
+.cta-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 1.5rem 3rem;
+  background: linear-gradient(135deg, #14b8a6, #0ea5e9);
+  color: #000000;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.125rem;
+  border-radius: 9999px;
+  transition: all 0.3s;
+  overflow: hidden;
+}
+
+.cta-button:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(20, 184, 166, 0.3);
+}
+
+.button-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.3), transparent);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.cta-button:hover .button-glow {
+  opacity: 1;
+}
+
+.cta-bg-pattern {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(circle at 25% 25%, rgba(20, 184, 166, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(14, 165, 233, 0.1) 0%, transparent 50%);
+  z-index: 1;
+}
+
+/* Smooth Number Animation */
+@property --num {
+  syntax: '<integer>';
+  initial-value: 0;
+  inherits: false;
+}
+
+.metric-number {
+  counter-reset: num var(--num);
+  animation: counter 1s ease-out forwards;
+  animation-play-state: paused;
+}
+
+.metric-number::after {
+  content: counter(num);
+}
+
+.immersive-section:hover .metric-number {
+  animation-play-state: running;
+}
+
+@keyframes counter {
+  from { --num: 0; }
+  to { --num: var(--target); }
+}
+
+/* Large Screens */
+@media (min-width: 1600px) {
+  .immersive-year-bg {
+    font-size: 500px;
+    right: 0%;
+  }
+}
+
+@media (min-width: 1920px) {
+  .immersive-year-bg {
+    font-size: 600px;
+    right: 5%;
+  }
+}
+
+@media (min-width: 2560px) {
+  .immersive-year-bg {
+    font-size: 700px;
+    right: 10%;
+  }
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+  .immersive-section {
+    padding: 4rem 1.5rem;
+    min-height: auto;
+  }
+  
+  .immersive-year-bg {
+    font-size: 50vw;
+    right: -15%;
+  }
+  
+  .immersive-title {
+    font-size: 2.5rem;
+  }
+  
+  .immersive-grid {
+    gap: 3rem;
+  }
+  
+  .metric-value {
+    font-size: 2.5rem;
+  }
+  
+  .progress-indicator {
+    display: none;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .immersive-section,
+  .metric-card,
+  .immersive-quote,
+  .immersive-link,
+  .immersive-impact {
+    transition: none !important;
+  }
+  
+  .immersive-year-bg {
+    transform: none !important;
+  }
+  
+  .metric-number {
+    animation: none !important;
+  }
+  
+  .divider-pulse,
+  .immersive-badge {
+    animation: none !important;
+  }
+}

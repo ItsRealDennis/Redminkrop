@@ -1,0 +1,200 @@
+/* Hero RMK Brand Styles */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+.rmk-hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--rmk-white, #ffffff);
+  color: var(--rmk-black, #000000);
+  overflow: hidden;
+  font-family: 'Lato', sans-serif;
+}
+
+/* Background Pattern */
+.rmk-hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -25%;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, var(--rmk-orange, #ed6a2f) 0%, transparent 70%);
+  opacity: 0.03;
+  pointer-events: none;
+}
+
+.rmk-hero::after {
+  content: '';
+  position: absolute;
+  bottom: -50%;
+  left: -25%;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, var(--rmk-blue, #39bde4) 0%, transparent 70%);
+  opacity: 0.03;
+  pointer-events: none;
+}
+
+/* Brand Mark */
+.rmk-brand-mark {
+  position: absolute;
+  top: 3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+}
+
+.rmk-logo-circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--rmk-orange, #ed6a2f);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(237, 106, 47, 0.2);
+}
+
+.rmk-logo-icon {
+  width: 50px;
+  height: 50px;
+  color: var(--rmk-white, #ffffff);
+}
+
+/* Content */
+.rmk-hero-content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.rmk-hero-subheading {
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--rmk-orange, #ed6a2f);
+  margin-bottom: 2rem;
+  opacity: 0;
+}
+
+.rmk-hero-heading {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(3rem, 8vw, 5rem);
+  font-weight: 800;
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: var(--rmk-black, #000000);
+  margin-bottom: 2rem;
+  opacity: 0;
+}
+
+.rmk-hero-heading-accent {
+  color: var(--rmk-orange, #ed6a2f);
+  font-weight: 700;
+}
+
+.rmk-hero-description {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  color: var(--rmk-dark-grey, #53575b);
+  max-width: 600px;
+  margin: 0 auto 3rem;
+  opacity: 0;
+}
+
+/* CTA Button */
+.rmk-hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 2rem;
+  background: var(--rmk-orange, #ed6a2f);
+  color: var(--rmk-white, #ffffff);
+  border: 3px solid var(--rmk-orange, #ed6a2f);
+  font-family: 'Lato', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  opacity: 0;
+}
+
+.rmk-hero-cta:hover {
+  background: transparent;
+  color: var(--rmk-orange, #ed6a2f);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(237, 106, 47, 0.2);
+}
+
+.rmk-hero-cta svg {
+  transition: transform 0.3s ease;
+}
+
+.rmk-hero-cta:hover svg {
+  transform: translateY(3px);
+}
+
+/* Scroll Indicator */
+.rmk-scroll-indicator {
+  position: absolute;
+  bottom: 3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.rmk-scroll-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, var(--rmk-orange, #ed6a2f), transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
+.rmk-scroll-text {
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--rmk-dark-grey, #53575b);
+}
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.3; transform: scaleY(0.8); }
+  50% { opacity: 1; transform: scaleY(1); }
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+  .rmk-brand-mark {
+    position: relative;
+    top: 0;
+    margin-bottom: 3rem;
+  }
+  
+  .rmk-hero-heading {
+    font-size: 2.5rem;
+  }
+  
+  .rmk-hero-description {
+    font-size: 1rem;
+  }
+  
+  .rmk-hero-cta {
+    padding: 0.875rem 1.5rem;
+    font-size: 0.75rem;
+  }
+}

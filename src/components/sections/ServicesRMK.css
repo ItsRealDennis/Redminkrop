@@ -1,0 +1,302 @@
+/* Services RMK - Premium Feel */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+.rmk-services {
+  position: relative;
+  padding: 6rem 2rem;
+  background: var(--rmk-light-grey);
+  overflow: hidden;
+}
+
+/* Background Pattern */
+.rmk-services::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 20% 50%, rgba(237, 106, 47, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(57, 189, 228, 0.05) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.rmk-services-container {
+  position: relative;
+  max-width: 1400px;
+  margin: 0 auto;
+  z-index: 1;
+}
+
+/* Header */
+.rmk-services-header {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+.rmk-services-subtitle {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--rmk-orange);
+  margin-bottom: 1rem;
+}
+
+.rmk-services-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: var(--rmk-black);
+  margin-bottom: 1.5rem;
+}
+
+.rmk-accent {
+  color: var(--rmk-orange);
+}
+
+.rmk-services-intro {
+  font-family: 'Lato', sans-serif;
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: var(--rmk-dark-grey);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Service Grid */
+.rmk-services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  margin-bottom: 5rem;
+}
+
+@media (min-width: 768px) {
+  .rmk-services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1200px) {
+  .rmk-services-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+/* Service Card */
+.rmk-service-card {
+  position: relative;
+  background: var(--rmk-white);
+  border-radius: 8px;
+  padding: 2.5rem 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.rmk-service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Card Number */
+.rmk-service-number {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 3rem;
+  font-weight: 800;
+  color: rgba(0, 0, 0, 0.05);
+  line-height: 1;
+}
+
+/* Card Icon */
+.rmk-service-icon {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--service-color);
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+  font-size: 1.75rem;
+  transition: all 0.3s ease;
+}
+
+.rmk-service-card:hover .rmk-service-icon {
+  transform: scale(1.1) rotate(5deg);
+}
+
+/* Card Content */
+.rmk-service-content {
+  position: relative;
+  z-index: 2;
+}
+
+.rmk-service-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--rmk-black);
+  margin-bottom: 0.5rem;
+}
+
+.rmk-service-subtitle {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--service-color);
+  margin-bottom: 1rem;
+}
+
+.rmk-service-description {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--rmk-dark-grey);
+  margin-bottom: 1.5rem;
+}
+
+/* Features List */
+.rmk-service-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.rmk-service-features li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-family: 'Lato', sans-serif;
+  font-size: 0.875rem;
+  color: var(--rmk-dark-grey);
+}
+
+.rmk-feature-check {
+  color: var(--service-color);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+/* Hover Background */
+.rmk-service-bg {
+  position: absolute;
+  inset: 0;
+  background: var(--service-color);
+  opacity: 0;
+  transform: translateY(100%);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.rmk-service-card:hover .rmk-service-bg {
+  opacity: 0.03;
+  transform: translateY(0);
+}
+
+/* Card CTA */
+.rmk-service-cta {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Lato', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--service-color);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 3;
+}
+
+.rmk-service-cta:hover {
+  transform: translateX(5px);
+}
+
+.rmk-service-cta svg {
+  transition: transform 0.3s ease;
+}
+
+.rmk-service-cta:hover svg {
+  transform: translateX(3px);
+}
+
+/* Bottom CTA Section */
+.rmk-services-cta {
+  text-align: center;
+  padding: 3rem;
+  background: var(--rmk-white);
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+.rmk-cta-text {
+  font-family: 'Lato', sans-serif;
+  font-size: 1.25rem;
+  color: var(--rmk-dark-grey);
+  margin-bottom: 2rem;
+}
+
+.rmk-cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.25rem 2.5rem;
+  background: var(--rmk-orange);
+  color: var(--rmk-white);
+  border: 3px solid var(--rmk-orange);
+  font-family: 'Lato', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.rmk-cta-button:hover {
+  background: var(--rmk-dark-orange);
+  border-color: var(--rmk-dark-orange);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(237, 106, 47, 0.3);
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+  .rmk-services {
+    padding: 4rem 1rem;
+  }
+  
+  .rmk-services-title {
+    font-size: 2rem;
+  }
+  
+  .rmk-service-card {
+    padding: 2rem 1.5rem;
+  }
+  
+  .rmk-service-number {
+    font-size: 2rem;
+  }
+}

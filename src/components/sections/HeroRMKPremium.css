@@ -1,0 +1,252 @@
+/* Hero RMK Premium - Following spec exactly */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+.rmk-hero-premium {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: var(--rmk-white);
+  overflow: hidden;
+}
+
+/* Decorative elements */
+.rmk-hero-decor {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.rmk-decor-line {
+  position: absolute;
+  width: 1px;
+  background: linear-gradient(to bottom, 
+    transparent, 
+    var(--rmk-orange),
+    transparent
+  );
+  opacity: 0.2;
+  transform-origin: top;
+}
+
+.rmk-decor-line--1 {
+  top: 20%;
+  left: 10%;
+  height: 120px;
+}
+
+.rmk-decor-line--2 {
+  top: 15%;
+  right: 15%;
+  height: 160px;
+}
+
+.rmk-decor-line--3 {
+  bottom: 25%;
+  left: 20%;
+  height: 100px;
+}
+
+/* Soft glows */
+.rmk-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  pointer-events: none;
+}
+
+.rmk-glow--1 {
+  top: -20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60vw;
+  height: 60vw;
+  background: radial-gradient(
+    closest-side, 
+    rgba(237, 106, 47, 0.15), 
+    transparent 70%
+  );
+}
+
+.rmk-glow--2 {
+  bottom: -10%;
+  right: 10%;
+  width: 40vw;
+  height: 40vw;
+  background: radial-gradient(
+    closest-side, 
+    rgba(57, 189, 228, 0.12), 
+    transparent 70%
+  );
+}
+
+/* Content */
+.rmk-hero-container {
+  position: relative;
+  z-index: 10;
+  max-width: 1200px;
+  text-align: center;
+}
+
+.rmk-hero-subtitle {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: var(--rmk-dark-grey);
+  margin-bottom: 2rem;
+  opacity: 0; /* For GSAP autoAlpha */
+}
+
+.rmk-hero-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(4rem, 10vw, 7rem);
+  font-weight: 800;
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: var(--rmk-black);
+  margin-bottom: 2rem;
+  
+  /* For SplitType */
+  perspective: 1000px;
+}
+
+.rmk-hero-title-accent {
+  color: var(--rmk-orange);
+  font-weight: 700;
+  font-style: italic;
+}
+
+/* Orange Heart */
+.rmk-hero-heart {
+  font-size: clamp(3rem, 6vw, 5rem);
+  line-height: 1;
+  margin: 1rem 0 2rem;
+  animation: heartBeat 2s ease-in-out infinite;
+  display: inline-block;
+}
+
+.rmk-hero-heart span {
+  display: inline-block;
+  filter: drop-shadow(0 0 20px rgba(237, 106, 47, 0.4));
+}
+
+@keyframes heartBeat {
+  0%, 100% { transform: scale(1); }
+  10% { transform: scale(1.1); }
+  20% { transform: scale(1); }
+  30% { transform: scale(1.05); }
+  40% { transform: scale(1); }
+}
+
+.rmk-hero-text {
+  font-family: 'Lato', sans-serif;
+  font-size: 1.25rem;
+  line-height: 1.6;
+  color: var(--rmk-dark-grey);
+  max-width: 700px;
+  margin: 0 auto 3rem;
+  opacity: 0; /* For GSAP autoAlpha */
+}
+
+/* CTA Button */
+.rmk-hero-button {
+  position: relative;
+  display: inline-block;
+  padding: 1.25rem 2.5rem;
+  font-family: 'Lato', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  background: var(--rmk-orange);
+  color: var(--rmk-white);
+  border: 3px solid var(--rmk-orange);
+  cursor: pointer;
+  overflow: hidden;
+  opacity: 0; /* For GSAP autoAlpha */
+  will-change: transform;
+}
+
+.rmk-button-text {
+  position: relative;
+  z-index: 2;
+}
+
+.rmk-button-bg {
+  position: absolute;
+  inset: 0;
+  background: var(--rmk-white);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.rmk-button-text-hover {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--rmk-orange);
+  opacity: 0;
+  transition: opacity 0.3s ease 0.1s;
+}
+
+.rmk-hero-button:hover .rmk-button-bg {
+  transform: scaleX(1);
+}
+
+.rmk-hero-button:hover .rmk-button-text-hover {
+  opacity: 1;
+}
+
+/* Scroll indicator */
+.rmk-scroll-indicator {
+  position: absolute;
+  bottom: 3rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.rmk-scroll-line {
+  width: 1px;
+  height: 80px;
+  background: linear-gradient(
+    to bottom, 
+    var(--rmk-orange), 
+    transparent
+  );
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
+@keyframes scrollPulse {
+  0%, 100% { 
+    opacity: 0.4; 
+    transform: scaleY(0.6);
+  }
+  50% { 
+    opacity: 1; 
+    transform: scaleY(1);
+  }
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .rmk-hero-title {
+    font-size: 3rem;
+  }
+  
+  .rmk-hero-text {
+    font-size: 1rem;
+  }
+  
+  .rmk-hero-button {
+    padding: 1rem 2rem;
+    font-size: 0.75rem;
+  }
+}

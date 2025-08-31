@@ -1,0 +1,789 @@
+/* Package Detail Enterprise - Premium Design */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Montserrat:wght@400;500;600;700;800;900&display=swap');
+
+.package-detail-enterprise {
+  position: relative;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+/* Hero Section */
+.package-hero.enterprise-hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 6rem 2rem;
+  background: #000000;
+  color: #ffffff;
+  overflow: hidden;
+}
+
+.hero-bg-gradient {
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(circle at 30% 0%, rgba(237, 106, 47, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 70% 100%, rgba(237, 106, 47, 0.2) 0%, transparent 50%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(237, 106, 47, 0.1) 100%);
+  pointer-events: none;
+}
+
+.hero-particles {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(2px 2px at 20% 30%, white, transparent),
+    radial-gradient(2px 2px at 60% 70%, white, transparent),
+    radial-gradient(1px 1px at 50% 50%, white, transparent);
+  background-size: 200px 200px;
+  background-position: 0 0, 40px 60px, 130px 270px;
+  opacity: 0.1;
+  animation: float 20s linear infinite;
+}
+
+@keyframes float {
+  to {
+    background-position: 200px 0, 240px 60px, 330px 270px;
+  }
+}
+
+.hero-container {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  z-index: 1;
+}
+
+.enterprise-badge {
+  display: inline-block;
+  background: var(--rmk-orange);
+  padding: 0.75rem 2rem;
+  margin-bottom: 2rem;
+  clip-path: polygon(0 0, 100% 0, 95% 100%, 5% 100%);
+}
+
+.enterprise-badge span {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 900;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+
+.package-eyebrow {
+  font-family: 'Lato', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--rmk-orange);
+  margin-bottom: 1.5rem;
+}
+
+.package-detail-enterprise .package-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(3rem, 7vw, 5rem);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+}
+
+.package-description {
+  font-family: 'Lato', sans-serif;
+  font-size: 1.5rem;
+  line-height: 1.5;
+  max-width: 800px;
+  margin-bottom: 3rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.hero-ctas {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 4rem;
+}
+
+.cta-primary {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.5rem 3rem;
+  background: var(--rmk-orange);
+  color: #ffffff;
+  border: none;
+  font-family: 'Lato', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 20px 40px rgba(237, 106, 47, 0.4);
+}
+
+.cta-secondary {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.5rem 3rem;
+  background: transparent;
+  color: #ffffff;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  font-family: 'Lato', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.cta-secondary:hover {
+  border-color: var(--rmk-orange);
+  background: rgba(237, 106, 47, 0.1);
+  transform: translateY(-3px);
+}
+
+.hero-stats {
+  display: flex;
+  gap: 4rem;
+  flex-wrap: wrap;
+}
+
+.stat {
+  text-align: center;
+}
+
+.stat-value {
+  display: block;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 3rem;
+  font-weight: 900;
+  color: var(--rmk-orange);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.stat-label {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Features Section */
+.package-features-section {
+  padding: 8rem 2rem;
+  background: #f8f8f8;
+}
+
+.features-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 900;
+  line-height: 1.2;
+  text-align: center;
+  margin-bottom: 5rem;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+}
+
+.section-title span {
+  display: block;
+}
+
+.section-title .accent {
+  color: var(--rmk-orange);
+}
+
+.features-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.feature-card.enterprise-feature {
+  display: grid;
+  grid-template-columns: auto auto 1fr auto;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem 3rem;
+  background: #ffffff;
+  border-radius: 0;
+  box-shadow: none;
+  border-left: 4px solid transparent;
+  transition: all 0.3s;
+}
+
+.feature-card.enterprise-feature:hover {
+  background: #ffffff;
+  border-left-color: var(--rmk-orange);
+  transform: translateX(10px);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+.feature-number {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 3rem;
+  font-weight: 900;
+  color: rgba(0, 0, 0, 0.05);
+  line-height: 1;
+}
+
+.package-detail-enterprise .feature-icon {
+  font-size: 2.5rem;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f0f0f0;
+  border-radius: 12px;
+}
+
+.feature-content {
+  flex: 1;
+}
+
+.feature-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  color: #000000;
+}
+
+.feature-frequency {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--rmk-orange);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.5rem;
+}
+
+.feature-description {
+  font-family: 'Lato', sans-serif;
+  font-size: 1rem;
+  color: rgba(0, 0, 0, 0.6);
+  line-height: 1.5;
+}
+
+.feature-arrow {
+  font-size: 2rem;
+  color: var(--rmk-orange);
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: all 0.3s;
+}
+
+.feature-card:hover .feature-arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Impact Section */
+.package-impact-section {
+  padding: 8rem 2rem;
+  background: #ffffff;
+}
+
+.impact-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.impact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.primary-impact {
+  position: sticky;
+  top: 2rem;
+}
+
+.impact-metric {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.metric-value {
+  display: block;
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(4rem, 8vw, 6rem);
+  font-weight: 900;
+  color: var(--rmk-orange);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.metric-label {
+  font-family: 'Lato', sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.6);
+  letter-spacing: 0.05em;
+}
+
+.impact-visual {
+  background: #f8f8f8;
+  padding: 3rem;
+  border-radius: 24px;
+}
+
+.impact-graph {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  height: 300px;
+  gap: 2rem;
+}
+
+.graph-bar {
+  flex: 1;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 8px 8px 0 0;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 1rem;
+  transition: all 0.6s ease-out;
+}
+
+.graph-bar.before {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.graph-bar.after {
+  background: var(--rmk-orange);
+}
+
+.graph-bar span {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+.secondary-impacts {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.impact-tile {
+  background: #000000;
+  color: #ffffff;
+  padding: 2.5rem;
+  text-align: center;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.impact-tile::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--rmk-orange);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s;
+}
+
+.impact-tile:hover::before {
+  transform: scaleX(1);
+}
+
+.impact-tile:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.tile-value {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+}
+
+.tile-label {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Case Studies Section */
+.case-studies-section {
+  padding: 8rem 2rem;
+  background: #f8f8f8;
+}
+
+.cases-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.cases-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+.case-card {
+  background: #ffffff;
+  padding: 3rem;
+  border-radius: 0;
+  border: 2px solid rgba(0, 0, 0, 0.08);
+  transition: all 0.3s;
+  text-align: center;
+}
+
+.case-card:hover {
+  border-color: var(--rmk-orange);
+  transform: translateY(-10px);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
+}
+
+.case-logo {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  font-weight: 900;
+  letter-spacing: 0.3em;
+  color: rgba(0, 0, 0, 0.3);
+  margin-bottom: 1rem;
+}
+
+.case-card h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.case-stat {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--rmk-orange);
+  margin-bottom: 1rem;
+}
+
+.case-description {
+  font-family: 'Lato', sans-serif;
+  font-size: 1rem;
+  color: rgba(0, 0, 0, 0.6);
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.case-cta {
+  background: none;
+  border: none;
+  font-family: 'Lato', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #000000;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.case-cta:hover {
+  color: var(--rmk-orange);
+  transform: translateX(5px);
+}
+
+/* Enterprise Pricing Section */
+.enterprise-pricing {
+  background: #000000;
+  color: #ffffff;
+}
+
+.enterprise-calculator {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.calculator-info h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.calculator-info p {
+  font-family: 'Lato', sans-serif;
+  font-size: 1.125rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 3rem;
+}
+
+.benefits-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.benefit {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.benefit span {
+  font-family: 'Lato', sans-serif;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.contact-form {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  padding: 3rem;
+  backdrop-filter: blur(10px);
+}
+
+.form-group {
+  margin-bottom: 3rem;
+}
+
+.form-group label {
+  display: block;
+  font-family: 'Lato', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.slider-container {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.employee-slider {
+  flex: 1;
+  height: 8px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  outline: none;
+  cursor: pointer;
+}
+
+.employee-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  background: var(--rmk-orange);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.employee-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 20px rgba(237, 106, 47, 0.5);
+}
+
+.slider-value {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--rmk-orange);
+  min-width: 120px;
+  text-align: center;
+}
+
+.estimated-savings {
+  background: rgba(46, 204, 113, 0.1);
+  border: 1px solid rgba(46, 204, 113, 0.3);
+  border-radius: 16px;
+  padding: 2rem;
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.savings-label {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 0.5rem;
+}
+
+.savings-value {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 3rem;
+  font-weight: 900;
+  color: #2ecc71;
+  margin-bottom: 0.5rem;
+}
+
+.savings-note {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.form-ctas {
+  display: flex;
+  gap: 1.5rem;
+  flex-direction: column;
+}
+
+.form-ctas button {
+  width: 100%;
+  padding: 1.5rem;
+  font-family: 'Lato', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.form-ctas .cta-primary {
+  background: var(--rmk-orange);
+  border: none;
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+}
+
+.button-bg {
+  position: absolute;
+  inset: 0;
+  background: #ffffff;
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.cta-primary:hover .button-bg {
+  transform: scaleY(1);
+}
+
+.cta-primary span {
+  position: relative;
+  z-index: 1;
+  transition: color 0.3s;
+}
+
+.cta-primary:hover span {
+  color: var(--rmk-orange);
+}
+
+.form-ctas .cta-secondary {
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+}
+
+.form-ctas .cta-secondary:hover {
+  border-color: #ffffff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Mobile */
+@media (max-width: 1024px) {
+  .impact-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .primary-impact {
+    position: static;
+  }
+  
+  .enterprise-calculator {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .package-title {
+    font-size: 2.5rem;
+  }
+  
+  .hero-stats {
+    gap: 2rem;
+  }
+  
+  .stat-value {
+    font-size: 2rem;
+  }
+  
+  .features-list .feature-card {
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding: 2rem;
+  }
+  
+  .feature-number {
+    display: none;
+  }
+  
+  .feature-arrow {
+    display: none;
+  }
+  
+  .secondary-impacts {
+    grid-template-columns: 1fr;
+  }
+  
+  .cases-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .hero-ctas {
+    flex-direction: column;
+  }
+  
+  .hero-ctas button {
+    width: 100%;
+    justify-content: center;
+  }
+}

@@ -1,0 +1,26 @@
+/* Clash Display - Display Font */
+@font-face {
+  font-family: 'Clash Display';
+  src: url('https://cdn.jsdelivr.net/gh/webfontworld/ClashDisplay/ClashDisplay-Variable.woff2') format('woff2-variations');
+  font-weight: 200 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Satoshi - Body Font */
+@font-face {
+  font-family: 'Satoshi';
+  src: url('https://cdn.jsdelivr.net/gh/webfontworld/satoshi/Satoshi-Variable.woff2') format('woff2-variations');
+  font-weight: 300 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Space Grotesk - Accent Font */
+@font-face {
+  font-family: 'Space Grotesk';
+  src: url('https://fonts.gstatic.com/s/spacegrotesk/v16/V8mDoQDjQSkFtoMM3T6r8E7mPb54C_k3HqUtEw.woff2') format('woff2');
+  font-weight: 300 700;
+  font-style: normal;
+  font-display: swap;
+}

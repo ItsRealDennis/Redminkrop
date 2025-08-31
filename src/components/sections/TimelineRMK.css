@@ -1,0 +1,474 @@
+/* Timeline RMK Brand Design */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Montserrat:wght@400;500;600;700&display=swap');
+
+/* RMK Brand Colors */
+:root {
+  --rmk-orange: #ed6a2f;
+  --rmk-dark-grey: #53575b;
+  --rmk-blue: #39bde4;
+  --rmk-yellow: #f4d74b;
+  --rmk-dark-orange: #96411c;
+  --rmk-light-grey: #d5dee9;
+  --rmk-black: #000000;
+  --rmk-white: #ffffff;
+}
+
+.rmk-timeline {
+  position: relative;
+  background: var(--rmk-white);
+  color: var(--rmk-dark-grey);
+  overflow: hidden;
+  font-family: 'Lato', sans-serif;
+}
+
+/* RMK Progress Indicator */
+.rmk-progress {
+  position: fixed;
+  right: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 100;
+  display: none;
+}
+
+@media (min-width: 1280px) {
+  .rmk-progress {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+}
+
+.rmk-progress-track {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 100%;
+  background: var(--rmk-light-grey);
+}
+
+.rmk-progress-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: var(--rmk-orange);
+  transition: height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.rmk-progress-dot {
+  position: relative;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  width: 12px;
+  height: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rmk-progress-dot::before {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--rmk-light-grey);
+  transition: all 0.3s;
+}
+
+.rmk-progress-dot.active::before {
+  width: 12px;
+  height: 12px;
+  background: var(--rmk-orange);
+}
+
+.rmk-progress-year {
+  position: absolute;
+  right: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--rmk-dark-grey);
+  opacity: 0;
+  transition: opacity 0.3s;
+  white-space: nowrap;
+}
+
+.rmk-progress-dot:hover .rmk-progress-year,
+.rmk-progress-dot.active .rmk-progress-year {
+  opacity: 1;
+}
+
+/* RMK Sections */
+.rmk-section {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 6rem 2rem;
+  opacity: 0;
+  transition: opacity 1s ease-out;
+}
+
+.rmk-section.in-view {
+  opacity: 1;
+}
+
+/* Background Year - RMK Style */
+.rmk-year-bg {
+  position: absolute;
+  top: 50%;
+  right: -5%;
+  transform: translateY(-50%);
+  font-size: 30vw;
+  font-weight: 900;
+  color: rgba(237, 106, 47, 0.05);
+  pointer-events: none;
+  user-select: none;
+  z-index: 1;
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: -0.05em;
+}
+
+/* Content */
+.rmk-content {
+  position: relative;
+  z-index: 10;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.rmk-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+}
+
+@media (min-width: 1024px) {
+  .rmk-grid {
+    grid-template-columns: 2fr 1fr;
+    gap: 6rem;
+  }
+}
+
+/* Main Content */
+.rmk-main {
+  max-width: 700px;
+}
+
+.rmk-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.rmk-year-label {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--rmk-orange);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.rmk-badge {
+  padding: 0.375rem 1rem;
+  background: var(--rmk-orange);
+  color: var(--rmk-white);
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: 2px;
+}
+
+.rmk-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
+  color: var(--rmk-black);
+}
+
+.rmk-description {
+  font-size: 1.125rem;
+  line-height: 1.7;
+  color: var(--rmk-dark-grey);
+  margin-bottom: 2rem;
+}
+
+/* Impact */
+.rmk-impact {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: var(--rmk-light-grey);
+  border-left: 4px solid var(--rmk-orange);
+}
+
+.rmk-impact-icon {
+  color: var(--rmk-orange);
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.rmk-impact p {
+  font-weight: 500;
+  color: var(--rmk-black);
+  margin: 0;
+}
+
+/* Quote */
+.rmk-quote {
+  margin: 2rem 0;
+  padding: 0;
+  border: none;
+}
+
+.rmk-quote p {
+  font-size: 1.125rem;
+  font-style: italic;
+  color: var(--rmk-dark-grey);
+  margin-bottom: 1rem;
+}
+
+.rmk-quote footer {
+  font-size: 0.875rem;
+  color: var(--rmk-dark-grey);
+}
+
+.rmk-quote strong {
+  color: var(--rmk-black);
+  font-weight: 700;
+}
+
+/* Link */
+.rmk-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 2rem;
+  padding: 0.75rem 1.5rem;
+  background: var(--rmk-orange);
+  color: var(--rmk-white);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: all 0.3s;
+  border: 2px solid var(--rmk-orange);
+}
+
+.rmk-link:hover {
+  background: transparent;
+  color: var(--rmk-orange);
+}
+
+.rmk-link svg {
+  transition: transform 0.3s;
+}
+
+.rmk-link:hover svg {
+  transform: translateX(4px);
+}
+
+/* Metrics - Minimal RMK Style */
+.rmk-metrics {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  align-items: flex-end;
+}
+
+@media (max-width: 1023px) {
+  .rmk-metrics {
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+  }
+}
+
+.rmk-metric {
+  text-align: right;
+}
+
+@media (max-width: 1023px) {
+  .rmk-metric {
+    text-align: center;
+  }
+}
+
+.rmk-metric-value {
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-end;
+  gap: 0.25rem;
+  margin-bottom: 0.5rem;
+}
+
+@media (max-width: 1023px) {
+  .rmk-metric-value {
+    justify-content: center;
+  }
+}
+
+.rmk-metric-number {
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: var(--rmk-orange);
+  line-height: 1;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.rmk-metric-unit {
+  font-size: 2rem;
+  color: var(--rmk-orange);
+  font-weight: 700;
+}
+
+.rmk-metric-label {
+  font-size: 0.75rem;
+  color: var(--rmk-dark-grey);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* Divider */
+.rmk-divider {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem 0;
+}
+
+.rmk-divider-line {
+  width: 100px;
+  height: 1px;
+  background: var(--rmk-light-grey);
+}
+
+.rmk-divider-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--rmk-orange);
+  border-radius: 50%;
+}
+
+/* CTA Section */
+.rmk-cta-section {
+  position: relative;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6rem 2rem;
+  background: var(--rmk-light-grey);
+  overflow: hidden;
+}
+
+.rmk-cta-section::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, var(--rmk-orange), transparent);
+  opacity: 0.05;
+  pointer-events: none;
+}
+
+.rmk-cta-content {
+  position: relative;
+  text-align: center;
+  max-width: 800px;
+  z-index: 10;
+}
+
+.rmk-cta-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  font-weight: 700;
+  color: var(--rmk-black);
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+.rmk-cta-subtitle {
+  font-size: 1.125rem;
+  color: var(--rmk-dark-grey);
+  margin-bottom: 3rem;
+}
+
+.rmk-cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 2.5rem;
+  background: var(--rmk-orange);
+  color: var(--rmk-white);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: all 0.3s;
+  border: 3px solid var(--rmk-orange);
+}
+
+.rmk-cta-button:hover {
+  background: var(--rmk-dark-orange);
+  border-color: var(--rmk-dark-orange);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(237, 106, 47, 0.3);
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+  .rmk-section {
+    padding: 4rem 1.5rem;
+  }
+  
+  .rmk-year-bg {
+    font-size: 60vw;
+    right: -20%;
+    opacity: 0.3;
+  }
+  
+  .rmk-title {
+    font-size: 1.75rem;
+  }
+  
+  .rmk-metric-number {
+    font-size: 2.5rem;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .rmk-section,
+  .rmk-link,
+  .rmk-cta-button {
+    transition: none !important;
+  }
+  
+  .rmk-year-bg {
+    transform: translateY(-50%) !important;
+  }
+}

@@ -1,0 +1,458 @@
+/* Cases RMK - Spacious Premium Design */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Montserrat:wght@400;500;600;700;800;900&display=swap');
+
+:root {
+  --rmk-blue: #39bde4;
+  --rmk-dark-orange: #d45a29;
+}
+
+.cases-section {
+  position: relative;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+/* Fixed Indicator */
+.cases-indicator {
+  position: fixed;
+  right: 3rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  z-index: 100;
+}
+
+.indicator-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: transparent;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: all 0.3s;
+  position: relative;
+}
+
+.indicator-dot:hover {
+  border-color: var(--rmk-orange);
+  transform: scale(1.2);
+}
+
+.indicator-dot.active {
+  background: var(--rmk-orange);
+  border-color: var(--rmk-orange);
+}
+
+.indicator-dot.active::after {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border: 1px solid var(--rmk-orange);
+  border-radius: 50%;
+  opacity: 0.3;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 0.3; }
+  50% { transform: scale(1.2); opacity: 0; }
+}
+
+/* Header */
+.cases-header {
+  padding: 10rem 0 8rem;
+  text-align: center;
+}
+
+.cases-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(3.5rem, 8vw, 6rem);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+}
+
+.title-line {
+  display: block;
+  margin: 0.5rem 0;
+}
+
+.title-line.accent {
+  color: var(--rmk-orange);
+}
+
+.cases-subtitle {
+  font-family: 'Lato', sans-serif;
+  font-size: 1.5rem;
+  color: rgba(0, 0, 0, 0.6);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Cases List */
+.cases-list {
+  position: relative;
+}
+
+/* Individual Case Section */
+.case-section {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 8rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.case-section:last-child {
+  border-bottom: none;
+}
+
+.case-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 4rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8rem;
+  align-items: center;
+}
+
+/* Left side - Company info */
+.case-info {
+  position: relative;
+}
+
+.case-company {
+  margin-bottom: 4rem;
+}
+
+.company-name {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 3rem;
+  font-weight: 800;
+  color: #000000;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+}
+
+.company-type {
+  font-family: 'Lato', sans-serif;
+  font-size: 1.125rem;
+  color: rgba(0, 0, 0, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.case-quote {
+  position: relative;
+  padding-left: 3rem;
+}
+
+.case-quote::before {
+  content: '"';
+  position: absolute;
+  left: 0;
+  top: -1rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 8rem;
+  font-weight: 900;
+  color: var(--case-color);
+  opacity: 0.1;
+  line-height: 1;
+}
+
+.case-quote blockquote {
+  font-family: 'Lato', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 300;
+  line-height: 1.6;
+  color: rgba(0, 0, 0, 0.8);
+  margin: 0 0 2rem 0;
+}
+
+.case-quote cite {
+  display: block;
+  font-style: normal;
+}
+
+.author-name {
+  display: block;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #000000;
+  margin-bottom: 0.25rem;
+}
+
+.author-position {
+  display: block;
+  font-family: 'Lato', sans-serif;
+  font-size: 0.875rem;
+  color: rgba(0, 0, 0, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* Right side - Result */
+.case-result {
+  text-align: center;
+  position: relative;
+}
+
+.result-metric {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.metric-sign {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 4rem;
+  font-weight: 300;
+  color: var(--case-color);
+  margin-right: 0.5rem;
+}
+
+.case-metric-value {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(8rem, 15vw, 12rem);
+  font-weight: 900;
+  line-height: 0.8;
+  color: var(--case-color);
+  letter-spacing: -0.05em;
+}
+
+.metric-unit {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 4rem;
+  font-weight: 300;
+  color: var(--case-color);
+  margin-left: 0.5rem;
+}
+
+.result-label {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #000000;
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.result-period {
+  font-family: 'Lato', sans-serif;
+  font-size: 1.125rem;
+  color: rgba(0, 0, 0, 0.6);
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+/* Background number */
+.case-bg-number {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 40vw;
+  font-weight: 900;
+  color: rgba(0, 0, 0, 0.02);
+  letter-spacing: -0.05em;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* CTA Section */
+.cases-cta-section {
+  padding: 12rem 0;
+  background: #000000;
+  color: #ffffff;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.cases-cta-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(circle at 20% 50%, rgba(237, 106, 47, 0.2) 0%, transparent 50%),
+    radial-gradient(circle at 80% 50%, rgba(57, 189, 228, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.cta-container {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  z-index: 1;
+}
+
+.cta-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
+}
+
+.cta-subtitle {
+  font-family: 'Lato', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 300;
+  margin-bottom: 4rem;
+  opacity: 0.8;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 2rem 4rem;
+  background: var(--rmk-orange);
+  color: #ffffff;
+  font-family: 'Lato', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #ffffff;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.cta-button:hover::before {
+  transform: scaleX(1);
+}
+
+.cta-button span,
+.cta-button svg {
+  position: relative;
+  z-index: 1;
+  transition: color 0.3s;
+}
+
+.cta-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 30px 60px rgba(237, 106, 47, 0.4);
+}
+
+.cta-button:hover span,
+.cta-button:hover svg {
+  color: var(--rmk-orange);
+}
+
+.cta-button svg {
+  transition: transform 0.3s;
+}
+
+.cta-button:hover svg {
+  transform: translateX(10px);
+}
+
+/* Mobile & Tablet */
+@media (max-width: 1200px) {
+  .cases-indicator {
+    right: 2rem;
+  }
+  
+  .case-container {
+    gap: 4rem;
+    padding: 0 2rem;
+  }
+  
+  .case-metric-value {
+    font-size: clamp(6rem, 12vw, 10rem);
+  }
+}
+
+@media (max-width: 768px) {
+  .cases-indicator {
+    display: none;
+  }
+  
+  .cases-header {
+    padding: 6rem 2rem 4rem;
+  }
+  
+  .cases-title {
+    font-size: 3rem;
+  }
+  
+  .case-section {
+    min-height: auto;
+    padding: 4rem 0;
+  }
+  
+  .case-container {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+    text-align: center;
+  }
+  
+  .case-quote {
+    padding-left: 0;
+  }
+  
+  .case-quote::before {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .company-name {
+    font-size: 2rem;
+  }
+  
+  .case-quote blockquote {
+    font-size: 1.25rem;
+  }
+  
+  .case-metric-value {
+    font-size: 5rem;
+  }
+  
+  .metric-sign,
+  .metric-unit {
+    font-size: 2rem;
+  }
+  
+  .result-label {
+    font-size: 1.5rem;
+  }
+  
+  .case-bg-number {
+    font-size: 60vw;
+  }
+  
+  .cta-button {
+    padding: 1.5rem 2rem;
+    font-size: 0.875rem;
+  }
+}
