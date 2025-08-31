@@ -109,13 +109,20 @@
   min-height: 100vh;
   display: flex;
   align-items: center;
-  padding: 6rem 2rem;
+  padding: 8rem 3rem;
   opacity: 0;
   transition: opacity 1s ease-out;
 }
 
 .rmk-section.in-view {
   opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .rmk-section {
+    padding: 4rem 2rem;
+    min-height: auto;
+  }
 }
 
 /* Background Year - RMK Style */
@@ -143,205 +150,335 @@
   width: 100%;
 }
 
+/* Card-based layout */
 .rmk-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 3rem;
+  position: relative;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.95));
+  backdrop-filter: blur(20px);
+  border-radius: 32px;
+  padding: 4rem;
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.08),
+    0 0 0 1px rgba(255, 255, 255, 0.8),
+    inset 0 0 0 1px rgba(237, 106, 47, 0.1);
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.rmk-grid::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, var(--rmk-orange), transparent 40%);
+  opacity: 0.03;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+
+.rmk-section:hover .rmk-grid::before {
+  opacity: 0.06;
+}
+
+.rmk-section:hover .rmk-grid {
+  transform: translateY(-4px);
+  box-shadow: 
+    0 30px 60px rgba(0, 0, 0, 0.12),
+    0 0 0 1px rgba(255, 255, 255, 0.9),
+    inset 0 0 0 1px rgba(237, 106, 47, 0.15);
 }
 
 @media (min-width: 1024px) {
   .rmk-grid {
-    grid-template-columns: 2fr 1fr;
-    gap: 6rem;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 4rem;
+    padding: 5rem;
   }
 }
 
 /* Main Content */
 .rmk-main {
-  max-width: 700px;
+  position: relative;
 }
 
 .rmk-header {
+  position: relative;
   display: flex;
   align-items: center;
-  gap: 1.5rem;
-  margin-bottom: 2rem;
+  gap: 2rem;
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+}
+
+.rmk-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 120px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--rmk-orange), transparent);
+  border-radius: 3px;
 }
 
 .rmk-year-label {
-  font-size: 0.875rem;
-  font-weight: 700;
-  color: var(--rmk-orange);
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
+  position: relative;
+  font-size: 5rem;
+  font-weight: 900;
+  font-family: 'Montserrat', sans-serif;
+  background: linear-gradient(135deg, var(--rmk-orange), #e85a1f);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1;
+  letter-spacing: -0.02em;
 }
 
 .rmk-badge {
-  padding: 0.375rem 1rem;
-  background: var(--rmk-orange);
+  padding: 0.5rem 1.5rem;
+  background: var(--rmk-black);
   color: var(--rmk-white);
   font-size: 0.625rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
+  font-weight: 600;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  border-radius: 2px;
+  border-radius: 4px;
+  align-self: flex-start;
+  margin-top: 1rem;
 }
 
 .rmk-title {
   font-family: 'Montserrat', sans-serif;
-  font-size: clamp(2rem, 5vw, 3rem);
+  font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 700;
-  line-height: 1.1;
-  margin-bottom: 1.5rem;
+  line-height: 1.2;
+  margin-bottom: 2rem;
   letter-spacing: -0.02em;
   color: var(--rmk-black);
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.rmk-title::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 10%;
+  bottom: 10%;
+  width: 4px;
+  background: var(--rmk-orange);
+  border-radius: 2px;
 }
 
 .rmk-description {
   font-size: 1.125rem;
-  line-height: 1.7;
+  line-height: 1.8;
   color: var(--rmk-dark-grey);
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
+  font-weight: 400;
+  opacity: 0.9;
 }
 
 /* Impact */
 .rmk-impact {
-  display: flex;
-  align-items: flex-start;
-  gap: 1rem;
-  margin: 2rem 0;
-  padding: 1.5rem;
-  background: var(--rmk-light-grey);
-  border-left: 4px solid var(--rmk-orange);
+  position: relative;
+  margin: 2.5rem 0;
+  padding: 2rem 2rem 2rem 3rem;
+  background: var(--rmk-black);
+  color: var(--rmk-white);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.rmk-impact::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 6px;
+  background: var(--rmk-orange);
+}
+
+.rmk-impact::after {
+  content: '→';
+  position: absolute;
+  right: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  color: var(--rmk-orange);
+  opacity: 0.3;
+  transition: all 0.3s ease;
+}
+
+.rmk-impact:hover {
+  transform: scale(1.02);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+}
+
+.rmk-impact:hover::after {
+  opacity: 0.6;
+  transform: translateY(-50%) translateX(4px);
 }
 
 .rmk-impact-icon {
-  color: var(--rmk-orange);
-  font-size: 1.5rem;
-  font-weight: 700;
+  display: none;
 }
 
 .rmk-impact p {
   font-weight: 500;
-  color: var(--rmk-black);
+  font-size: 1.125rem;
+  line-height: 1.6;
   margin: 0;
+  position: relative;
+  z-index: 1;
 }
 
 /* Quote */
 .rmk-quote {
-  margin: 2rem 0;
+  margin: 3rem 0;
   padding: 0;
   border: none;
+  position: relative;
+  background: linear-gradient(135deg, rgba(237, 106, 47, 0.05), rgba(237, 106, 47, 0.02));
+  border-radius: 20px;
+  padding: 3rem;
+  text-align: center;
+}
+
+.rmk-quote::before,
+.rmk-quote::after {
+  content: '"';
+  position: absolute;
+  font-size: 8rem;
+  font-weight: 900;
+  color: var(--rmk-orange);
+  opacity: 0.08;
+  font-family: 'Montserrat', sans-serif;
+  line-height: 1;
+}
+
+.rmk-quote::before {
+  top: -20px;
+  left: 20px;
+}
+
+.rmk-quote::after {
+  bottom: -40px;
+  right: 20px;
+  transform: rotate(180deg);
 }
 
 .rmk-quote p {
-  font-size: 1.125rem;
+  font-size: 1.5rem;
   font-style: italic;
-  color: var(--rmk-dark-grey);
-  margin-bottom: 1rem;
+  font-weight: 300;
+  color: var(--rmk-black);
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+  letter-spacing: 0;
+  position: relative;
+  z-index: 1;
 }
 
 .rmk-quote footer {
   font-size: 0.875rem;
   color: var(--rmk-dark-grey);
+  position: relative;
+  z-index: 1;
 }
 
 .rmk-quote strong {
   color: var(--rmk-black);
   font-weight: 700;
+  font-style: normal;
 }
 
-/* Link */
-.rmk-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-top: 2rem;
-  padding: 0.75rem 1.5rem;
-  background: var(--rmk-orange);
-  color: var(--rmk-white);
-  text-decoration: none;
-  font-weight: 700;
-  font-size: 0.875rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  transition: all 0.3s;
-  border: 2px solid var(--rmk-orange);
-}
 
-.rmk-link:hover {
-  background: transparent;
-  color: var(--rmk-orange);
-}
-
-.rmk-link svg {
-  transition: transform 0.3s;
-}
-
-.rmk-link:hover svg {
-  transform: translateX(4px);
-}
-
-/* Metrics - Minimal RMK Style */
+/* Metrics - Visual Cards */
 .rmk-metrics {
-  display: flex;
-  flex-direction: column;
-  gap: 3rem;
-  align-items: flex-end;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-top: 2rem;
 }
 
 @media (max-width: 1023px) {
   .rmk-metrics {
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 3rem;
   }
 }
 
 .rmk-metric {
-  text-align: right;
+  position: relative;
+  background: var(--rmk-white);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 20px;
+  padding: 2rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  overflow: hidden;
 }
 
-@media (max-width: 1023px) {
-  .rmk-metric {
-    text-align: center;
-  }
+.rmk-metric::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--rmk-orange);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.rmk-metric:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+  border-color: var(--rmk-orange);
+}
+
+.rmk-metric:hover::before {
+  transform: scaleX(1);
 }
 
 .rmk-metric-value {
   display: flex;
   align-items: baseline;
-  justify-content: flex-end;
+  justify-content: center;
   gap: 0.25rem;
   margin-bottom: 0.5rem;
 }
 
-@media (max-width: 1023px) {
-  .rmk-metric-value {
-    justify-content: center;
-  }
-}
-
 .rmk-metric-number {
-  font-size: 3.5rem;
+  font-size: 3rem;
   font-weight: 900;
-  color: var(--rmk-orange);
+  background: linear-gradient(135deg, var(--rmk-orange), #e85a1f);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   line-height: 1;
   font-family: 'Montserrat', sans-serif;
 }
 
 .rmk-metric-unit {
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: var(--rmk-orange);
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .rmk-metric-label {
   font-size: 0.75rem;
   color: var(--rmk-dark-grey);
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+  opacity: 0.8;
 }
 
 /* Divider */
@@ -442,21 +579,105 @@
 /* Mobile Adjustments */
 @media (max-width: 768px) {
   .rmk-section {
-    padding: 4rem 1.5rem;
+    padding: 3rem 1rem;
   }
   
   .rmk-year-bg {
     font-size: 60vw;
     right: -20%;
-    opacity: 0.3;
+    opacity: 0.03;
+  }
+
+  .rmk-grid {
+    padding: 2.5rem 1.5rem;
+    border-radius: 20px;
+  }
+
+  .rmk-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .rmk-year-label {
+    font-size: 3rem;
+  }
+
+  .rmk-badge {
+    margin-top: 0;
   }
   
   .rmk-title {
     font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .rmk-description {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .rmk-impact {
+    padding: 1.5rem 1.5rem 1.5rem 2.5rem;
+    margin: 2rem 0;
+  }
+
+  .rmk-impact::after {
+    right: 1rem;
+    font-size: 1.5rem;
+  }
+
+  .rmk-impact p {
+    font-size: 1rem;
+  }
+
+  .rmk-quote {
+    padding: 2rem;
+  }
+
+  .rmk-quote::before,
+  .rmk-quote::after {
+    font-size: 4rem;
+  }
+
+  .rmk-quote p {
+    font-size: 1.125rem;
+  }
+
+  .rmk-metrics {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .rmk-metric {
+    padding: 1.5rem;
   }
   
   .rmk-metric-number {
     font-size: 2.5rem;
+  }
+
+  .rmk-metric-unit {
+    font-size: 1.25rem;
+  }
+
+  .rmk-cta-section {
+    padding: 4rem 1.5rem;
+    min-height: auto;
+  }
+
+  .rmk-cta-title {
+    font-size: 1.5rem;
+  }
+
+  .rmk-cta-subtitle {
+    font-size: 1rem;
+  }
+
+  .rmk-cta-button {
+    padding: 0.875rem 2rem;
+    font-size: 0.875rem;
   }
 }
 

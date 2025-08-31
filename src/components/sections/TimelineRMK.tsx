@@ -96,7 +96,7 @@ export default function TimelineRMK() {
               <div className="rmk-main">
                 <div className="rmk-header">
                   <time className="rmk-year-label" dateTime={item.year.toString()}>
-                    ÅR {item.year}
+                    {item.year}
                   </time>
                   {item.year === 2025 && (
                     <span className="rmk-badge">NÆSTE KAPITEL</span>
@@ -128,16 +128,6 @@ export default function TimelineRMK() {
                   </blockquote>
                 )}
 
-                {item.link && (
-                  <Link href={item.link} className="rmk-link">
-                    {item.link.includes('/cases') ? 'SE CASE' : 
-                     item.link.includes('/kontakt') ? 'KONTAKT OS' : 
-                     'LÆS MERE'}
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </Link>
-                )}
               </div>
 
               {/* Metrics Side - RMK Minimal */}
