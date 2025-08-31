@@ -67,46 +67,55 @@ export default function HeroRMKPremium() {
     // 5) Animate CTA with magnetic effect setup
     tl.from(cta, { scale: 0, autoAlpha: 0, duration: 0.7, ease: 'back.out(1.7)' }, '-=0.5');
     
-    // 6) Magnetic button effect
-    const magneticStrength = 0.3;
+    // 6) Magnetic button effect (only on non-touch devices)
+    const hasTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
     
-    const handleMouseMove = (e: MouseEvent) => {
-      const rect = cta.getBoundingClientRect();
-      const centerX = rect.left + rect.width / 2;
-      const centerY = rect.top + rect.height / 2;
-      const deltaX = e.clientX - centerX;
-      const deltaY = e.clientY - centerY;
-      const distance = Math.sqrt(deltaX ** 2 + deltaY ** 2);
+    if (!hasTouch) {
+      const magneticStrength = 0.3;
       
-      if (distance < 200) {
-        const pullX = deltaX * magneticStrength;
-        const pullY = deltaY * magneticStrength;
+      const handleMouseMove = (e: MouseEvent) => {
+        const rect = cta.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+        const deltaX = e.clientX - centerX;
+        const deltaY = e.clientY - centerY;
+        const distance = Math.sqrt(deltaX ** 2 + deltaY ** 2);
         
+        if (distance < 200) {
+          const pullX = deltaX * magneticStrength;
+          const pullY = deltaY * magneticStrength;
+          
+          gsap.to(cta, {
+            x: pullX,
+            y: pullY,
+            duration: 0.3,
+            ease: 'power2.out',
+          });
+        }
+      };
+      
+      const handleMouseLeave = () => {
         gsap.to(cta, {
-          x: pullX,
-          y: pullY,
-          duration: 0.3,
-          ease: 'power2.out',
+          x: 0,
+          y: 0,
+          duration: 0.5,
+          ease: 'elastic.out(1, 0.3)',
         });
-      }
-    };
-    
-    const handleMouseLeave = () => {
-      gsap.to(cta, {
-        x: 0,
-        y: 0,
-        duration: 0.5,
-        ease: 'elastic.out(1, 0.3)',
-      });
-    };
-    
-    window.addEventListener('mousemove', handleMouseMove);
-    cta.addEventListener('mouseleave', handleMouseLeave);
+      };
+      
+      window.addEventListener('mousemove', handleMouseMove);
+      cta.addEventListener('mouseleave', handleMouseLeave);
+      
+      // Return cleanup function
+      return () => {
+        window.removeEventListener('mousemove', handleMouseMove);
+        cta.removeEventListener('mouseleave', handleMouseLeave);
+        headingSplit.revert();
+      };
+    }
     
     // Cleanup
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-      cta.removeEventListener('mouseleave', handleMouseLeave);
       headingSplit.revert();
     };
   }, []);

@@ -237,16 +237,81 @@
 
 /* Mobile adjustments */
 @media (max-width: 768px) {
+  .rmk-hero-premium {
+    padding: 1rem;
+    min-height: 100svh; /* Use small viewport height for mobile browsers */
+  }
+  
+  .rmk-hero-container {
+    padding: 0 1rem;
+  }
+  
+  .rmk-hero-subtitle {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    margin-bottom: 1.5rem;
+  }
+  
   .rmk-hero-title {
-    font-size: 3rem;
+    font-size: clamp(2.5rem, 8vw, 3.5rem);
+    margin-bottom: 1.5rem;
+  }
+  
+  .rmk-hero-heart {
+    font-size: clamp(2.5rem, 5vw, 3rem);
+    margin: 0.75rem 0 1.5rem;
   }
   
   .rmk-hero-text {
     font-size: 1rem;
+    line-height: 1.5;
+    padding: 0 0.5rem;
+    margin-bottom: 2rem;
   }
   
   .rmk-hero-button {
     padding: 1rem 2rem;
     font-size: 0.75rem;
+    width: 100%;
+    max-width: 280px;
+  }
+  
+  /* Reduce decorative elements on mobile */
+  .rmk-glow--1 {
+    width: 80vw;
+    height: 80vw;
+  }
+  
+  .rmk-glow--2 {
+    width: 60vw;
+    height: 60vw;
+  }
+  
+  .rmk-decor-line {
+    opacity: 0.1;
+  }
+  
+  .rmk-scroll-indicator {
+    bottom: 2rem;
+  }
+  
+  .rmk-scroll-line {
+    height: 60px;
+  }
+}
+
+/* Small mobile adjustments */
+@media (max-width: 480px) {
+  .rmk-hero-title {
+    font-size: clamp(2rem, 7vw, 2.5rem);
+  }
+  
+  .rmk-hero-text {
+    font-size: 0.875rem;
+  }
+  
+  .rmk-hero-button {
+    padding: 0.875rem 1.75rem;
+    font-size: 0.7rem;
   }
 }

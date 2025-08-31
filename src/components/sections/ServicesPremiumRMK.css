@@ -363,25 +363,146 @@
 
 /* Mobile Adjustments */
 @media (max-width: 768px) {
+  .services-premium {
+    min-height: auto;
+  }
+  
+  .services-header {
+    padding: 4rem 1rem 2rem;
+  }
+  
+  .services-title {
+    font-size: clamp(2rem, 6vw, 3rem);
+  }
+  
+  .services-title .word {
+    margin: 0 0.25rem;
+  }
+  
+  /* Mobile stack layout */
   .services-cards {
-    padding: 0 1rem;
+    height: auto;
+    display: block;
+    padding: 2rem 1rem;
+  }
+  
+  .services-cards.mobile-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
   }
   
   .service-card {
-    width: 95vw;
-    padding: 2rem;
+    position: relative;
+    width: 100%;
+    height: auto;
+    transform: none !important;
+    padding: 2rem 1.5rem;
+    margin: 0;
+  }
+  
+  /* Reset stacking on mobile */
+  .service-card:nth-child(n) {
+    z-index: 1;
+    transform: none;
   }
   
   .card-bg-number {
-    font-size: 40vw;
+    font-size: 30vw;
+    top: -10%;
+    right: -5%;
+  }
+  
+  .card-header {
+    margin-bottom: 1.5rem;
+  }
+  
+  .card-icon {
+    font-size: 2rem;
   }
   
   .card-title {
-    font-size: 1.75rem;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .card-tagline {
+    font-size: 0.875rem;
+  }
+  
+  .card-description {
+    font-size: 0.875rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .card-stat {
+    margin-bottom: 1.5rem;
   }
   
   .stat-value {
-    font-size: 3rem;
+    font-size: 2.5rem;
+  }
+  
+  .stat-label {
+    font-size: 0.75rem;
+  }
+  
+  .card-cta {
+    padding: 0.875rem 1.5rem;
+    font-size: 0.75rem;
+  }
+  
+  /* Hide progress indicators on mobile */
+  .services-progress {
+    display: none;
+  }
+  
+  /* CTA Section Mobile */
+  .services-cta-section {
+    padding: 4rem 1rem;
+  }
+  
+  .cta-title {
+    font-size: clamp(1.5rem, 5vw, 2rem);
+  }
+  
+  .cta-subtitle {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .cta-main-button {
+    padding: 1rem 2rem;
+    font-size: 0.875rem;
+    width: 100%;
+    max-width: 280px;
+  }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+  .services-header {
+    padding: 3rem 1rem 1.5rem;
+  }
+  
+  .services-title {
+    font-size: 1.75rem;
+  }
+  
+  .service-card {
+    padding: 1.5rem;
+  }
+  
+  .card-bg-number {
+    display: none; /* Hide on very small screens */
+  }
+  
+  .card-title {
+    font-size: 1.25rem;
+  }
+  
+  .card-cta {
+    width: 100%;
   }
 }
 

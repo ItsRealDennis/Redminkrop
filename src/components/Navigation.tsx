@@ -28,10 +28,14 @@ export default function Navigation() {
     return () => clearTimeout(showTimer)
   }, [])
 
-  // Magnetic effect for trigger
+  // Magnetic effect for trigger (disabled on touch devices)
   useEffect(() => {
     const magnet = magnetRef.current
     if (!magnet) return
+
+    // Check if device supports touch
+    const hasTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0
+    if (hasTouch) return // Skip magnetic effect on touch devices
 
     const handleMouseMove = (e: MouseEvent) => {
       const rect = magnet.getBoundingClientRect()
@@ -154,7 +158,7 @@ export default function Navigation() {
       {/* Magnetic Trigger Button */}
       <button
         ref={triggerRef}
-        className={`nav-trigger ${isVisible ? 'visible' : ''} ${isOpen ? 'active' : ''}`}
+        className={`nav-trigger ${isVisible ? 'visible' : ''} ${isOpen ? 'active' : ''} touch-target`}
         onClick={() => setIsOpen(!isOpen)}
         aria-label="Toggle navigation"
       >
@@ -198,7 +202,7 @@ export default function Navigation() {
             ))}
           </div>
 
-          <Link href="#contact" className="nav-cta" onClick={handleNavClick}>
+          <Link href="#contact" className="nav-cta touch-target" onClick={handleNavClick}>
             <span className="cta-text">Book møde</span>
             <div className="cta-background"></div>
           </Link>

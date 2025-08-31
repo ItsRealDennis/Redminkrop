@@ -106,6 +106,7 @@ body {
   overflow-x: hidden;
   position: relative;
   min-height: 100vh;
+  -webkit-tap-highlight-color: transparent;
 }
 
 /* Typography */
@@ -441,6 +442,75 @@ p {
   -webkit-user-select: none;
 }
 
+/* Mobile Utilities */
+.touch-target {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+.hide-on-mobile {
+  @media (max-width: 768px) {
+    display: none !important;
+  }
+}
+
+.show-on-mobile {
+  display: none !important;
+  @media (max-width: 768px) {
+    display: block !important;
+  }
+}
+
+.mobile-padding {
+  @media (max-width: 768px) {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+.mobile-stack {
+  @media (max-width: 768px) {
+    flex-direction: column !important;
+    gap: 1.5rem;
+  }
+}
+
+/* Responsive Container */
+.container-responsive {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  
+  @media (min-width: 640px) {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  
+  @media (min-width: 768px) {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    max-width: 768px;
+  }
+  
+  @media (min-width: 1024px) {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+    max-width: 1024px;
+  }
+  
+  @media (min-width: 1280px) {
+    padding-left: 3rem;
+    padding-right: 3rem;
+    max-width: 1280px;
+  }
+  
+  @media (min-width: 1536px) {
+    max-width: 1536px;
+  }
+}
+
 /* Responsive Typography */
 @media (max-width: 768px) {
   :root {
@@ -451,5 +521,16 @@ p {
   
   h1, .h1 {
     letter-spacing: -0.02em;
+  }
+  
+  /* Prevent horizontal scroll on mobile */
+  html, body {
+    overflow-x: hidden;
+    width: 100%;
+  }
+  
+  /* Mobile-optimized grain overlay */
+  .grain::before {
+    opacity: 0.3; /* Reduce grain opacity on mobile for better performance */
   }
 }

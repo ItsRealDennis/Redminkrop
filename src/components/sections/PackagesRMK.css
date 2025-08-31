@@ -75,6 +75,12 @@
   margin-right: auto;
 }
 
+@media (max-width: 1400px) {
+  .packages-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 @media (max-width: 1200px) {
   .packages-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -84,6 +90,8 @@
 @media (max-width: 768px) {
   .packages-grid {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
   }
 }
 
@@ -380,7 +388,7 @@
 .cta-text {
   font-family: 'Lato', sans-serif;
   font-size: 1.25rem;
-  color: rgba(0, 0, 0, 0.7);
+  color: #000000;
   margin-bottom: 2rem;
 }
 
@@ -426,21 +434,132 @@
 
 /* Mobile */
 @media (max-width: 768px) {
-  .packages-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
+  .packages-section {
+    padding: 4rem 0;
+  }
+  
+  .packages-container {
+    padding: 0 1rem;
+  }
+  
+  .packages-header {
+    margin-bottom: 3rem;
+  }
+  
+  .packages-title {
+    font-size: clamp(2rem, 5vw, 2.5rem);
+  }
+  
+  .packages-title .word {
+    margin: 0 0.2rem;
+  }
+  
+  .packages-subtitle {
+    font-size: 1rem;
+  }
+  
+  .package-card {
+    padding: 2rem 1.5rem;
   }
   
   .package-card.popular {
     transform: scale(1);
+    border-width: 2px;
+  }
+  
+  .package-card:hover {
+    transform: translateY(-8px);
   }
   
   .package-card.popular:hover {
-    transform: translateY(-10px);
+    transform: translateY(-8px);
+  }
+  
+  .popular-badge {
+    font-size: 0.65rem;
+    padding: 0.3rem 0.75rem;
+  }
+  
+  .package-size {
+    font-size: 0.75rem;
   }
   
   .package-card-title {
     font-size: 1.1rem;
-    line-height: 1.15;
+    line-height: 1.2;
+  }
+  
+  .feature-item {
+    font-size: 0.875rem;
+    padding: 0.5rem 0;
+  }
+  
+  .feature-icon {
+    width: 14px;
+    height: 14px;
+  }
+  
+  .package-price {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .package-cta {
+    padding: 1rem 1.5rem;
+    font-size: 0.8rem;
+  }
+  
+  .cta-arrow {
+    width: 16px;
+    height: 16px;
+  }
+  
+  .bg-circle {
+    width: 200px;
+    height: 200px;
+  }
+  
+  .bg-lines {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .packages-bottom-cta {
+    padding: 2rem 1rem;
+  }
+  
+  .cta-text {
+    font-size: 1rem;
+  }
+  
+  .consultation-button {
+    padding: 1rem 2rem;
+    font-size: 0.75rem;
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+  .packages-title {
+    font-size: 1.75rem;
+  }
+  
+  .package-card {
+    padding: 1.5rem;
+  }
+  
+  .package-card-title {
+    font-size: 1rem;
+  }
+  
+  .package-price {
+    font-size: 1.25rem;
+  }
+  
+  .package-cta {
+    padding: 0.875rem 1.25rem;
+    font-size: 0.7rem;
   }
 }

@@ -14,6 +14,11 @@ export const metadata: Metadata = {
     description: "En cinematisk digital oplevelse der transformerer måden virksomheder tænker medarbejdersundhed på",
     type: "website",
   },
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 1,
+  },
 };
 
 export default function RootLayout({
