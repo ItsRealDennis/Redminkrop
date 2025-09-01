@@ -1,9 +1,38 @@
 /* Premium Modern Footer */
 .footer {
   position: relative;
-  background: #000000;
+  background: #000000 !important;
+  background-color: #000000 !important;
   margin-top: 10rem;
   overflow: hidden;
+  z-index: 1000;
+  /* Ensure footer has solid background that blocks WebGL background */
+  isolation: isolate;
+  /* Force paint layer */
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* Add pseudo-element to ensure solid black background */
+.footer::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #000000 !important;
+  background-color: #000000 !important;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Additional background layer to ensure complete coverage */
+.footer::after {
+  content: '';
+  position: absolute;
+  inset: -10px;
+  background: #000000 !important;
+  background-color: #000000 !important;
+  z-index: -2;
+  pointer-events: none;
 }
 
 .footer-line {
@@ -17,9 +46,12 @@
 }
 
 .footer-container {
+  position: relative;
   max-width: 1400px;
   margin: 0 auto;
   padding: 8rem 2rem 3rem;
+  background: #000000;
+  z-index: 1;
 }
 
 .footer-main {

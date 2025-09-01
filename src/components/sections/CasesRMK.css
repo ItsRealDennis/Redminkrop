@@ -62,7 +62,7 @@
 
 /* Header */
 .cases-header {
-  padding: 10rem 0 8rem;
+  padding: 10rem 2rem 8rem;
   text-align: center;
 }
 
@@ -263,12 +263,13 @@
   left: 50%;
   transform: translate(-50%, -50%);
   font-family: 'Montserrat', sans-serif;
-  font-size: 40vw;
+  font-size: clamp(15rem, 40vw, 30rem);
   font-weight: 900;
   color: rgba(0, 0, 0, 0.02);
   letter-spacing: -0.05em;
   pointer-events: none;
   z-index: 0;
+  overflow: hidden;
 }
 
 /* CTA Section */
@@ -399,22 +400,32 @@
   }
   
   .cases-header {
-    padding: 6rem 2rem 4rem;
+    padding: 4rem 1.5rem 3rem;
   }
   
   .cases-title {
-    font-size: 3rem;
+    font-size: clamp(2rem, 8vw, 3rem);
+  }
+  
+  .cases-subtitle {
+    font-size: 1.125rem;
+    padding: 0 1rem;
   }
   
   .case-section {
     min-height: auto;
-    padding: 4rem 0;
+    padding: 3rem 0;
   }
   
   .case-container {
     grid-template-columns: 1fr;
-    gap: 4rem;
+    gap: 2.5rem;
     text-align: center;
+    padding: 0 1.5rem;
+  }
+  
+  .case-company {
+    margin-bottom: 2rem;
   }
   
   .case-quote {
@@ -424,35 +435,113 @@
   .case-quote::before {
     left: 50%;
     transform: translateX(-50%);
+    font-size: 4rem;
+    top: -0.5rem;
   }
   
   .company-name {
-    font-size: 2rem;
+    font-size: clamp(1.5rem, 6vw, 2rem);
+    word-break: break-word;
+    hyphens: auto;
+  }
+  
+  .company-type {
+    font-size: 0.875rem;
   }
   
   .case-quote blockquote {
-    font-size: 1.25rem;
+    font-size: 1.125rem;
+    padding: 0 1rem;
   }
   
   .case-metric-value {
-    font-size: 5rem;
+    font-size: clamp(3.5rem, 15vw, 5rem);
   }
   
   .metric-sign,
   .metric-unit {
-    font-size: 2rem;
+    font-size: clamp(1.5rem, 6vw, 2rem);
   }
   
   .result-label {
-    font-size: 1.5rem;
+    font-size: clamp(1.25rem, 5vw, 1.5rem);
+    padding: 0 1rem;
+  }
+  
+  .result-period {
+    font-size: 1rem;
+    padding: 0 1rem;
   }
   
   .case-bg-number {
-    font-size: 60vw;
+    font-size: 40vw;
+    opacity: 0.02;
   }
   
   .cta-button {
-    padding: 1.5rem 2rem;
+    padding: 1.25rem 1.5rem;
+    font-size: 0.75rem;
+    width: calc(100% - 2rem);
+    max-width: 300px;
+  }
+  
+  .cases-cta-section {
+    padding: 6rem 1.5rem;
+  }
+  
+  .cta-title {
+    font-size: clamp(1.75rem, 7vw, 2.5rem);
+  }
+  
+  .cta-subtitle {
+    font-size: 1.125rem;
+    padding: 0 1rem;
+  }
+}
+
+/* Very small screens */
+@media (max-width: 480px) {
+  .cases-header {
+    padding: 3rem 1rem 2rem;
+  }
+  
+  .case-section {
+    padding: 2rem 0;
+  }
+  
+  .case-container {
+    padding: 0 1rem;
+    gap: 2rem;
+  }
+  
+  .company-name {
+    font-size: 1.5rem;
+  }
+  
+  .case-quote blockquote {
+    font-size: 1rem;
+  }
+  
+  .case-metric-value {
+    font-size: 3rem;
+  }
+  
+  .metric-sign,
+  .metric-unit {
+    font-size: 1.25rem;
+  }
+  
+  .result-label {
+    font-size: 1.125rem;
+  }
+  
+  .result-period {
     font-size: 0.875rem;
+  }
+  
+  .cta-button {
+    padding: 1rem 1.25rem;
+    font-size: 0.625rem;
+    letter-spacing: 0.1em;
   }
 }

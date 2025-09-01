@@ -67,7 +67,7 @@ export default function Footer() {
   ]
 
   return (
-    <footer ref={footerRef} className="footer">
+    <footer ref={footerRef} className="footer" style={{ backgroundColor: '#000000' }}>
       <div className="footer-line" ref={lineRef}></div>
       
       <div className="footer-container">

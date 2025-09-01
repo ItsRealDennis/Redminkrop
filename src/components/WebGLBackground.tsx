@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { ShaderMaterial, Vector2 } from 'three';
 import * as THREE from 'three';
@@ -131,18 +131,50 @@ function ShaderPlane() {
 // Starfield removed (reverted)
 
 export default function WebGLBackground() {
+  const [isMobile, setIsMobile] = useState(false);
+  
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+  
+  if (isMobile) {
+    // Simple gradient fallback for mobile
+    return (
+      <div 
+        className="fixed inset-0 -z-10" 
+        style={{ 
+          zIndex: -1,
+          background: 'linear-gradient(135deg, #0a0a0a 0%, #141414 50%, #0a0a0a 100%)'
+        }}
+      />
+    );
+  }
+  
   return (
-    <div className="fixed inset-0 -z-10">
+    <div className="fixed inset-0 -z-10" style={{ zIndex: -1 }}>
       <Canvas
         camera={{ position: [0, 0, 1], fov: 50 }}
-        gl={{ antialias: true, powerPreference: 'high-performance' }}
-        dpr={[1, 2]}
+        gl={{ 
+          antialias: false, // Disable antialiasing on mobile
+          powerPreference: 'low-power', // Use low power mode for mobile
+          alpha: false,
+          stencil: false,
+          depth: false
+        }}
+        dpr={[1, 1.5]} // Lower DPR for mobile
       >
         <ShaderPlane />
         <EffectComposer>
-          <Bloom intensity={0.4} luminanceThreshold={0.1} luminanceSmoothing={0.7} mipmapBlur />
-          <Noise premultiply blendFunction={BlendFunction.SCREEN} opacity={0.05} />
-          <Vignette eskil={false} offset={0.2} darkness={0.7} />
+          <Bloom intensity={0.3} luminanceThreshold={0.15} luminanceSmoothing={0.5} />
+          <Noise premultiply blendFunction={BlendFunction.SCREEN} opacity={0.03} />
+          <Vignette eskil={false} offset={0.3} darkness={0.6} />
         </EffectComposer>
       </Canvas>
     </div>

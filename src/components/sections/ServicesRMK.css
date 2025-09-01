@@ -72,8 +72,8 @@
 /* Service Grid */
 .rmk-services-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
   margin-bottom: 5rem;
 }
 
@@ -102,6 +102,7 @@
   overflow: hidden;
   transform-style: preserve-3d;
   will-change: transform;
+  min-width: 0; /* Prevent overflow on small screens */
 }
 
 .rmk-service-card:hover {
@@ -285,11 +286,27 @@
 /* Mobile Adjustments */
 @media (max-width: 768px) {
   .rmk-services {
-    padding: 4rem 1rem;
+    padding: 3rem 1rem;
+  }
+  
+  .rmk-services-header {
+    margin-bottom: 3rem;
   }
   
   .rmk-services-title {
-    font-size: 2rem;
+    font-size: clamp(1.75rem, 6vw, 2.5rem);
+    margin-bottom: 1rem;
+  }
+  
+  .rmk-services-intro {
+    font-size: 1rem;
+    padding: 0 1rem;
+  }
+  
+  .rmk-services-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
   }
   
   .rmk-service-card {
@@ -298,5 +315,94 @@
   
   .rmk-service-number {
     font-size: 2rem;
+    top: 1rem;
+    right: 1rem;
+  }
+  
+  .rmk-service-icon {
+    width: 48px;
+    height: 48px;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .rmk-service-title {
+    font-size: 1.125rem;
+    word-break: break-word;
+    hyphens: auto;
+  }
+  
+  .rmk-service-subtitle {
+    font-size: 0.75rem;
+  }
+  
+  .rmk-service-description {
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
+  }
+  
+  .rmk-service-features {
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .rmk-service-features li {
+    font-size: 0.75rem;
+  }
+  
+  .rmk-services-cta {
+    padding: 2rem 1.5rem;
+  }
+  
+  .rmk-cta-text {
+    font-size: 1.125rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .rmk-cta-button {
+    padding: 1rem 1.5rem;
+    font-size: 0.75rem;
+  }
+}
+
+/* Very small screens */
+@media (max-width: 480px) {
+  .rmk-services {
+    padding: 2rem 0.75rem;
+  }
+  
+  .rmk-services-title {
+    font-size: 1.75rem;
+  }
+  
+  .rmk-services-intro {
+    font-size: 0.875rem;
+  }
+  
+  .rmk-services-grid {
+    gap: 1rem;
+  }
+  
+  .rmk-service-card {
+    padding: 1.5rem 1.25rem;
+  }
+  
+  .rmk-service-title {
+    font-size: 1rem;
+  }
+  
+  .rmk-service-description {
+    font-size: 0.8125rem;
+  }
+  
+  .rmk-services-cta {
+    padding: 1.5rem 1rem;
+  }
+  
+  .rmk-cta-button {
+    padding: 0.875rem 1.25rem;
+    font-size: 0.625rem;
+    width: 100%;
+    max-width: 280px;
   }
 }
