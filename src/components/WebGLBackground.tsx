@@ -1,7 +1,7 @@
 'use client';
 
 import { useRef, useEffect, useState } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
+import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { ShaderMaterial, Vector2 } from 'three';
 import * as THREE from 'three';
 import { EffectComposer, Bloom, Vignette, Noise } from '@react-three/postprocessing';
@@ -96,6 +96,7 @@ function ShaderPlane() {
   const meshRef = useRef<THREE.Mesh>(null);
   const materialRef = useRef<ShaderMaterial>(null);
   const mappedMouse = new Vector2(0.5, 0.5);
+  const { width: vw, height: vh } = useThree((state) => state.viewport);
   
   useFrame((state) => {
     if (!materialRef.current || !meshRef.current) return;
@@ -104,15 +105,15 @@ function ShaderPlane() {
     materialRef.current.uniforms.time.value = state.clock.elapsedTime;
     materialRef.current.uniforms.mouse.value = mappedMouse;
     materialRef.current.uniforms.resolution.value.set(state.size.width, state.size.height);
-    
-    // Scale plane to viewport to fully cover screen
-    const vw = state.viewport.width;
-    const vh = state.viewport.height;
-    meshRef.current.scale.set(vw, vh, 1);
+
+    // Ensure plane always covers viewport (also on resize)
+    const viewportWidth = state.viewport.width;
+    const viewportHeight = state.viewport.height;
+    meshRef.current.scale.set(viewportWidth, viewportHeight, 1);
   });
   
   return (
-    <mesh ref={meshRef}>
+    <mesh ref={meshRef} scale={[vw, vh, 1]}>
       <planeGeometry args={[1, 1]} />
       <shaderMaterial
         ref={materialRef}
@@ -132,8 +133,11 @@ function ShaderPlane() {
 
 export default function WebGLBackground() {
   const [isMobile, setIsMobile] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  const [isReady, setIsReady] = useState(false);
   
   useEffect(() => {
+    setMounted(true);
     const checkMobile = () => {
       setIsMobile(window.innerWidth <= 768);
     };
@@ -141,8 +145,21 @@ export default function WebGLBackground() {
     checkMobile();
     window.addEventListener('resize', checkMobile);
     
-    return () => window.removeEventListener('resize', checkMobile);
+    // Delay showing the background to ensure page is ready
+    const timer = setTimeout(() => {
+      setIsReady(true);
+    }, 100);
+    
+    return () => {
+      window.removeEventListener('resize', checkMobile);
+      clearTimeout(timer);
+    };
   }, []);
+  
+  // Return nothing until fully ready to prevent any flash
+  if (!mounted || !isReady) {
+    return null;
+  }
   
   if (isMobile) {
     // Simple gradient fallback for mobile
@@ -151,24 +168,38 @@ export default function WebGLBackground() {
         className="fixed inset-0 -z-10" 
         style={{ 
           zIndex: -1,
-          background: 'linear-gradient(135deg, #0a0a0a 0%, #141414 50%, #0a0a0a 100%)'
+          background: 'linear-gradient(135deg, #0a0a0a 0%, #141414 50%, #0a0a0a 100%)',
+          opacity: 1,
+          animation: 'webglFadeIn 0.5s ease-in-out'
         }}
       />
     );
   }
   
   return (
-    <div className="fixed inset-0 -z-10" style={{ zIndex: -1 }}>
+    <div 
+      className="fixed inset-0 -z-10" 
+      style={{ 
+        zIndex: -1,
+        opacity: 1,
+        animation: 'webglFadeIn 0.5s ease-in-out'
+      }}
+    >
       <Canvas
+        className="rmk-webgl-canvas"
         camera={{ position: [0, 0, 1], fov: 50 }}
         gl={{ 
-          antialias: false, // Disable antialiasing on mobile
-          powerPreference: 'low-power', // Use low power mode for mobile
-          alpha: false,
+          antialias: false,
+          powerPreference: 'low-power',
+          alpha: true,
           stencil: false,
           depth: false
         }}
-        dpr={[1, 1.5]} // Lower DPR for mobile
+        onCreated={({ gl }) => {
+          gl.setClearColor(0x000000, 0); // transparent
+        }}
+        style={{ background: 'transparent' }}
+        dpr={[1, 1.5]}
       >
         <ShaderPlane />
         <EffectComposer>

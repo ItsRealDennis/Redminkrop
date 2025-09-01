@@ -30,9 +30,7 @@ export default function RootLayout({
     <html lang="da">
       <body className="grain">
         <CustomCursor />
-        <div style={{ position: 'relative', zIndex: 0 }}>
-          <WebGLBackground />
-        </div>
+        <WebGLBackground />
         <Navigation />
         <main>
           {children}
